@@ -1,0 +1,54 @@
+{
+  "name": "samplary",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A fast, simple sample manager.",
+  "license": "MIT",
+  "author": "sylophi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylophi/samplary.git"
+  },
+  "main": ".vite/build/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "engine": "cargo build --release -p samplary-engine",
+    "test": "cargo test --release --workspace",
+    "eval": "cargo run --release --example eval --",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@effect/platform-node": "4.0.5",
+    "@fontsource-variable/geist": "^5.2.9",
+    "effect": "4.0.5",
+    "lucide-react": "^1.59.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.2",
+    "@electron-forge/maker-zip": "^7.11.2",
+    "@electron-forge/plugin-fuses": "^7.11.2",
+    "@electron-forge/plugin-vite": "^7.11.2",
+    "@electron-forge/shared-types": "^7.11.2",
+    "@electron/fuses": "^1.8.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^43.7.7",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.4"
+  },
+  "packageManager": "pnpm@12.4.1",
+  "productName": "Samplary"
+}

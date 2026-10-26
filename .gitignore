@@ -1,0 +1,9 @@
+node_modules/
+.vite/
+out/
+target/
+*.log
+.DS_Store
+.env
+*.tsbuildinfo
+models/

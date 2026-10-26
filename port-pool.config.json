@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "portNames": ["web"],
+  "envFiles": {
+    ".env": {
+      "PORT": "${web}"
+    }
+  }
+}

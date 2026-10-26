@@ -1,0 +1,114 @@
+@import "@fontsource-variable/geist";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --sidebar: oklch(0.985 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --faint-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.955 0 0);
+  --selected: oklch(0.925 0 0);
+  --border: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --playhead: oklch(0.145 0 0);
+  /* The similarity bar is the one tint outside the waveforms. */
+  --match: oklch(0.62 0.13 250);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --sidebar: oklch(0.17 0 0);
+    --muted: oklch(0.205 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --faint-foreground: oklch(0.5 0 0);
+    --accent: oklch(0.22 0 0);
+    --selected: oklch(0.27 0 0);
+    --border: oklch(1 0 0 / 10%);
+    --ring: oklch(0.556 0 0);
+    --playhead: oklch(0.985 0 0);
+    --match: oklch(0.7 0.12 250);
+  }
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar: var(--sidebar);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-faint-foreground: var(--faint-foreground);
+  --color-accent: var(--accent);
+  --color-selected: var(--selected);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-playhead: var(--playhead);
+  --color-match: var(--match);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: "tnum" 1;
+    overflow: hidden;
+    overscroll-behavior: none;
+    /* A desktop app: text selection only where it's useful. */
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+  input {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+  button {
+    cursor: default;
+  }
+}
+
+/* Thin range sliders for the similarity weights and volume. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 16px;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(
+    to right,
+    var(--foreground) 0 var(--fill, 0%),
+    var(--border) var(--fill, 0%) 100%
+  );
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -4px;
+  border-radius: 9999px;
+  background: var(--foreground);
+}
+
+/* The window moves by its title bar: the sidebar's top and the toolbar. */
+[data-drag-region] {
+  -webkit-app-region: drag;
+}
+[data-drag-region] :is(button, input, label, select, a) {
+  -webkit-app-region: no-drag;
+}
