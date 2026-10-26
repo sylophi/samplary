@@ -71,7 +71,7 @@ unguessed), against 67% and 18% from the analysis alone.
 
 ## Building
 
-Needs Rust, Node 24, [pnpm](https://pnpm.io) and Xcode's command line tools.
+Needs Rust, Node 24, [pnpm](https://pnpm.io) and Xcode 26 or later.
 The first build downloads CLAP's model (118 MB) into `models/`.
 
 ```sh
