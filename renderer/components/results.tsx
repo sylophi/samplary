@@ -304,7 +304,7 @@ export function Results({
       className="flex min-h-0 flex-1 flex-col"
       style={Object.fromEntries(Object.entries(widths).map(([k, w]) => [`--col-${k}`, `${w}px`]))}
     >
-      <div className="group/header flex h-8 shrink-0 items-center gap-3 border-b px-4 text-xs text-muted-foreground">
+      <div className="group/header flex h-8 shrink-0 items-center gap-3 border-b pr-[calc(1rem+var(--scrollbar))] pl-4 text-xs text-muted-foreground">
         {similar && <div className="w-20 shrink-0">match</div>}
         <div className="shrink-0" style={{ width: THUMB_WIDTH }}>
           <button
@@ -354,7 +354,7 @@ export function Results({
       <div
         ref={scroller}
         onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
-        className="relative min-h-0 flex-1 overflow-y-auto"
+        className="relative min-h-0 flex-1 overflow-y-scroll"
       >
         {rows.length === 0 ? (
           empty
