@@ -16,6 +16,7 @@
   --playhead: oklch(0.145 0 0);
   /* The similarity bar is the one tint outside the waveforms. */
   --match: oklch(0.62 0.13 250);
+  --scrollbar: 11px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,6 +79,16 @@
   button {
     cursor: default;
   }
+}
+
+/* Scrollbars that stay put, not macOS's overlay ones that fade when idle. */
+::-webkit-scrollbar {
+  width: var(--scrollbar);
+}
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  background: var(--faint-foreground) padding-box;
 }
 
 /* Thin range sliders for the similarity weights and volume. */
